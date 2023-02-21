@@ -1,6 +1,6 @@
 # Word Weaver
 
-An online realtime multiplayer board game where players race to find the highest scoring words.
+An online real-time multiplayer board game where players race to find the highest scoring words.
 
 View live at [https://wordweaver.chrise.dev](https://wordweaver.chrise.dev).
 

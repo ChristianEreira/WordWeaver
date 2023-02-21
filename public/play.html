@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="../css/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e916bca64c.js" crossorigin="anonymous"></script>
+    <title>Word Weaver</title>
+</head>
+
+<body>
+    <div id="outerContent">
+        <div id="menuBar">
+            <div id="menuContent">
+                <a href="../"><img class="smallLogo" src="../images/logoWhite.svg" alt="Word Weaver logo"></a>
+                <div id="menuRight">
+                    <div>
+                        <span id="details">Loading...</span>
+                        <a href="#" id="signOutLink">Sign out</a>
+                    </div>
+                    <img id="image" src="../images/defaultUser.svg" alt="Profile picture">
+                </div>
+            </div>
+        </div>
+        <div id="mainContent" class="gameContent">
+            <div class="gameVert">
+                <div class="gameHor">
+                    <div class="gamePanel" id="boardPanel">
+                        <div class="gameVert">
+                            <div class="scores">
+                                <div class="scoreCard">
+                                    <div class="scoreProfile">
+                                        <img id="p1Image" src="../images/defaultUser.svg" alt="">
+                                        <p class="name" id="p1Name">...</p>
+                                    </div>
+                                    <p class="score" id="p1Score">...</p>
+                                </div>
+                                <div class="scoreCard">
+                                    <p class="score" id="p2Score">...</p>
+                                    <div class="scoreProfile">
+                                        <p class="name" id="p2Name">...</p>
+                                        <img id="p2Image" src="../images/defaultUser.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <canvas id="gameBoard" width="100" height="100"></canvas>
+                        </div>
+                    </div>
+                    <div class="gameVert" id="sidePanels">
+                        <div class="gamePanel">
+                            <div class="boxHeader"><i class="fa-solid fa-clock-rotate-left"></i>Move history</div>
+                            <div id="moveHistory">
+                                <p><i>No moves have been made yet.</i></p>
+                            </div>
+                        </div>
+                        <div class="gamePanel">
+                            <div id="endButton" class="gameButton disabled">Surrender</div>
+                            <p class="boxDescription"><span id="endText"></span> <span id="endTime"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gamePanel" id="tilePanel">
+                    <div class="gameHor" id="tileRack"></div>
+                    <div id="moveButton" class="gameButton disabled">
+                        <div id="moveError" class="hidden"></div>
+                        <div id="moveButtonText">Make move</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tile floating hidden"></div>
+
+    <div id="loadingPopup" class="popup">
+        <div class="popupBox">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+            <p>Loading game...</p>
+        </div>
+    </div>
+
+    <div id="introPopup" class="popup">
+        <div class="popupBox">
+            <div id="introCloseButton" class="popupClose"><i class="fa-solid fa-times"></i></div>
+            <h2>How to play</h2>
+            <div class="introFlex">
+                <div class="tile">W</div>
+                <p>On your turn, <b>drag tiles</b> from your rack onto the board to <b>form words</b>.</p>
+            </div>
+            <div class="introFlex">
+                <div class="tile modifier">x3</div>
+                <p>Use <b>modifiers</b> to permanently increase a tile's value.</p>
+            </div>
+            <div class="introFlex">
+                <i class="fa-solid fa-trophy"></i>
+                <p><b>Reach 200 points</b> before your opponent to win the game!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="endedPopup" class="popup hidden">
+        <div class="gameCard current">
+            <div class="cardCapsule current">You won!</div>
+            <p>Your opponent surrendered!</p>
+            <div class="smallScores">
+                <div class="smallScoreLine">
+                    <img src="../images/defaultUser.svg" alt="">
+                    <p>Testname</p>
+                    <p>0</p>
+                </div>
+                <div class="smallScoreLine">
+                    <img src="../images/defaultUser.svg" alt="">
+                    <p>TestName2</p>
+                    <p>123</p>
+                </div>
+            </div>
+            <a href="../">
+                <div class="gameButton">Return to games list</div>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-functions.js"></script>
+    <script src="../firebaseInit.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js"
+        integrity="sha512-hcV6DX35BKgiTiWYrJgPbu3FxS6CsCjKgmrsPRpUPkXWbvPiKxvSVSdhWX0yXcPctOI2FJ4WP6N1zH+17B/sAA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/plugin/relativeTime.min.js"
+        integrity="sha512-MVzDPmm7QZ8PhEiqJXKz/zw2HJuv61waxb8XXuZMMs9b+an3LoqOqhOEt5Nq3LY1e4Ipbbd/e+AWgERdHlVgaA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/plugin/updateLocale.min.js"
+        integrity="sha512-5AXG8n/7ZieZPodmu5R2fVCl8MjkA4mrYLXZ6QuhYw1hlAFa6n1YK1PbsF3ewKhfw0py00H8fnmhmnP4jph4Kw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="../game.js"></script>
+</body>
+
+</html>

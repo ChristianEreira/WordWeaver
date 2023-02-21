@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" class="scrollablePage">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="../css/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e916bca64c.js" crossorigin="anonymous"></script>
+    <title>Word Weaver</title>
+</head>
+
+<body>
+    <div id="outerContent">
+        <div id="menuBar">
+            <div id="menuContent">
+                <img class="smallLogo" src="../images/logoWhite.svg" alt="Word Weaver logo">
+                <div id="menuRight">
+                    <div>
+                        <span id="details">Loading...</span>
+                        <a href="#" id="signOutLink">Sign out</a>
+                    </div>
+                    <img id="image" src="../images/defaultUser.svg" alt="Profile picture">
+                </div>
+            </div>
+        </div>
+        <div id="mainContent">
+            <div class="smallLimit">
+                <div class="bannerBorder">
+                    <div class="largeBanner">
+                        <img src="../images/bannerW.png" alt="3D 'W' tile">
+
+                        <div class="bannerRight">
+                            <div>
+                                <h2>Start a game</h2>
+                                <p>Start a new game against a random user.</p>
+                                <div class="button" id="newGameButton">Find a new game</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="titleRule">
+                    <hr>
+                    <h3>Active games</h3>
+                    <hr>
+                </div>
+
+                <div id="gamesList">
+                    <p>Loading...</p>
+                </div>
+
+                <div class="titleRule">
+                    <hr>
+                    <h3>Completed games</h3>
+                    <hr>
+                </div>
+
+                <div id="completedGamesList">
+                    <p>Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="newGamePopup" class="popup hidden">
+        <div class="popupBox">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+            <p>Finding a partner...</p>
+        </div>
+    </div>
+    <div id="foundGamePopup" class="popup hidden">
+        <div class="popupBox">
+            <i class="fa-regular fa-circle-check"></i>
+            <p>Starting game...</p>
+        </div>
+    </div>
+    <div id="noGamePopup" class="popup hidden">
+        <div class="popupBox">
+            <i class="fa-regular fa-circle-xmark"></i>
+            <p>Sorry, we can't find any partners at the moment, please try again later.</p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-functions.js"></script>
+    <script src="../firebaseInit.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/dayjs.min.js"
+        integrity="sha512-hcV6DX35BKgiTiWYrJgPbu3FxS6CsCjKgmrsPRpUPkXWbvPiKxvSVSdhWX0yXcPctOI2FJ4WP6N1zH+17B/sAA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.7/plugin/relativeTime.min.js"
+        integrity="sha512-MVzDPmm7QZ8PhEiqJXKz/zw2HJuv61waxb8XXuZMMs9b+an3LoqOqhOEt5Nq3LY1e4Ipbbd/e+AWgERdHlVgaA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="../app.js"></script>
+</body>
+
+</html>

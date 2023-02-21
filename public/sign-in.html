@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <link type="text/css" rel="stylesheet" href="../css/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Word Weaver - Sign in</title>
+</head>
+
+<body>
+    <div id="outerContent">
+        <div id="menuBar">
+            <div id="menuContent">
+                <img class="smallLogo" src="../images/logoWhite.svg" alt="Word Weaver logo">
+                <span></span>
+            </div>
+        </div>
+        <div id="mainContent">
+            <div id="signInContent">
+                <div id="signInBox">
+                    <h1>Sign in to play!</h1>
+                    <div id="signin-container"></div>
+                    <div id="loader">Loading...</div>
+                </div>
+                <div>
+                    <img class="largeLogo" src="../images/3dlogo.png" alt="Word Weaver logo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <img id="waveFront" src="../images/waveFront.svg" alt="Wave foreground">
+    <img id="waveBack" src="../images/waveBack.svg" alt="Wave background">
+    <div id="emailPopup" class="popup hidden">
+        <div class="popupBox"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <script src="../firebaseInit.js"></script>
+
+    <script defer src="../sign-in.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**/play{,/!(**.@(js||css))}",
+        "destination": "/play.html"
+      },
+      {
+        "source": "**/!(**.@(js||css))",
+        "destination": "/sign-in.html"
+      }
+    ]
+  },
+  "functions": [
+    {
+      "source": "function",
+      "codebase": "functions",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
+    }
+  ]
+}
